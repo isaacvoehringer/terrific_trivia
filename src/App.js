@@ -1,6 +1,21 @@
-import React from "react";
-const App = () => {
-  return <h1>Terrific Trivia</h1>;
-};
+import React from "react"
 
-export default App;
+class App extends React.Component {
+  state = {
+    name: ""
+  }
+
+  componentDidMount() {
+    fetch("http://localhost:3000")
+      .then(res => res.json())
+      .then(data => this.setState({ name: data.name }))
+  }
+
+  render() {
+    return (
+      <h1>Hello {this.state.name}!</h1>
+    )
+  }
+}
+
+export default App
